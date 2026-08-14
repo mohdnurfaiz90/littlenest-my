@@ -8,13 +8,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="LittleNest Manager">
   <title>LittleNest Manager</title>
-  <link rel="manifest" href="manager.webmanifest?v=1">
+  <link rel="manifest" href="manager.webmanifest?v=4">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=1">
-  <link rel="stylesheet" href="fixes.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="fixes.css?v=4">
 </head>
 <body class="manager-page">
   <section class="manager-login" id="login-screen">
@@ -22,7 +22,7 @@
     <form class="login-card" id="login-form">
       <img src="assets/littlenest-logo.png" alt="LittleNest MY">
       <h1>LittleNest Manager</h1>
-      <p>Urus barang, harga dan stok dari satu tempat.</p>
+      <p>Urus barang sendiri dan produk affiliate dari satu tempat.</p>
       <label>Email<input id="login-email" type="email" autocomplete="username" required placeholder="email pengurus"></label>
       <label>Kata laluan<input id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••"></label>
       <button class="primary-button" type="submit">Log masuk</button>
@@ -42,7 +42,7 @@
 
     <main class="manager-main">
       <header class="manager-header">
-        <div><h1>LittleNest <span>Manager</span></h1><p>Kemas kini barang dan stok dengan mudah.</p></div>
+        <div><h1>LittleNest <span>Manager</span></h1><p>Barang sendiri dan affiliate, semuanya dalam satu aplikasi.</p></div>
         <div class="manager-header-actions"><button class="install-button" type="button" data-install-app>Pasang Manager</button><a href="index.html" target="_blank">Lihat Kedai ↗</a><button class="primary-button" id="add-product">＋ Tambah Barang</button></div>
       </header>
       <section class="manager-controls">
@@ -51,7 +51,7 @@
         <div class="manager-total"><small>Jumlah Produk</small><strong id="manager-count">0</strong></div>
       </section>
       <section class="manager-list-shell">
-        <div class="manager-list-head"><span>Produk</span><span>Harga</span><span>Stok</span><span>Kategori</span><span>Paparan</span><span>Tindakan</span></div>
+        <div class="manager-list-head"><span>Produk</span><span>Harga</span><span>Stok / Sumber</span><span>Kategori</span><span>Paparan</span><span>Tindakan</span></div>
         <div id="manager-list"></div>
         <div class="empty-state hidden" id="manager-empty"><h3>Belum ada barang</h3><p>Tekan “Tambah Barang” untuk mula.</p></div>
       </section>
@@ -60,14 +60,35 @@
 
   <div class="drawer-backdrop hidden" id="drawer-backdrop"></div>
   <aside class="product-drawer" id="product-drawer" aria-hidden="true">
-    <header><div><h2 id="drawer-title">Tambah Barang</h2><p>Isi maklumat produk untuk dipaparkan di kedai.</p></div><button id="close-drawer" aria-label="Tutup">×</button></header>
+    <header><div><h2 id="drawer-title">Tambah Barang</h2><p>Pilih cara produk ini dijual.</p></div><button id="close-drawer" aria-label="Tutup">×</button></header>
     <form id="product-form">
       <input type="hidden" id="product-id">
-      <label>Kod Produk<input id="product-code" maxlength="30" placeholder="Automatik, contoh LN-BJ-001"></label>
-      <label>Nama Produk<input id="product-name" maxlength="180" required placeholder="Contoh: Baju Kurung Kanak-kanak"></label>
-      <label>Kategori<select id="product-category" required></select></label>
-      <div class="form-pair"><label>Harga (RM)<input id="product-price" type="number" min="0" step="0.01" required placeholder="0.00"></label><label>Stok (unit)<input id="product-stock" type="number" min="0" step="1" required value="1"></label></div>
-      <fieldset class="image-fieldset"><legend>Gambar Produk</legend><label class="upload-zone"><input id="product-file" type="file" accept="image/jpeg,image/png,image/webp"><span>☁</span><strong>Klik untuk muat naik</strong><small>PNG, JPG atau WEBP · maksimum 5MB</small></label><div class="image-preview hidden" id="image-preview"><img alt="Pratonton produk"><button type="button" id="remove-image">Buang gambar</button></div></fieldset>
+
+      <fieldset class="source-fieldset">
+        <legend>Jenis produk</legend>
+        <div class="source-selector" id="source-selector">
+          <label><input type="radio" name="source-type" value="own" checked><span><b>🏡</b><strong>Barang sendiri</strong><small>Terus ke WhatsApp</small></span></label>
+          <label><input type="radio" name="source-type" value="shopee"><span><b>🛍️</b><strong>Shopee</strong><small>Link affiliate</small></span></label>
+          <label><input type="radio" name="source-type" value="tiktok"><span><b>♪</b><strong>TikTok</strong><small>Link affiliate</small></span></label>
+        </div>
+      </fieldset>
+
+      <section class="affiliate-link-panel hidden" id="affiliate-link-panel">
+        <label>Link affiliate<input id="product-url" type="url" inputmode="url" placeholder="Tampal link Shopee atau TikTok di sini"></label>
+        <button class="lookup-button" type="button" id="lookup-product"><span>✦</span> Cari maklumat produk</button>
+        <p class="lookup-note" id="lookup-note">Sistem akan cuba cari gambar, nama dan harga. Abg masih boleh semak atau betulkan.</p>
+      </section>
+
+      <section id="product-details">
+        <label>Kod Produk<input id="product-code" maxlength="30" placeholder="Automatik, contoh LN-BJ-001"></label>
+        <label>Nama Produk<input id="product-name" maxlength="180" required placeholder="Contoh: Baju Kurung Kanak-kanak"></label>
+        <label>Kategori<select id="product-category" required></select></label>
+        <div class="form-pair"><label>Harga (RM)<input id="product-price" type="number" min="0" step="0.01" required placeholder="0.00"></label><label id="stock-field">Stok (unit)<input id="product-stock" type="number" min="0" step="1" required value="1"></label></div>
+        <label class="price-current-toggle hidden" id="price-current-field"><input id="price-current" type="checkbox"><span><strong>Harga berubah-ubah</strong><small>Papar “Semak harga terkini” di kedai.</small></span></label>
+        <fieldset class="image-fieldset"><legend>Gambar Produk</legend><label class="upload-zone"><input id="product-file" type="file" accept="image/jpeg,image/png,image/webp"><span>☁</span><strong>Klik untuk muat naik</strong><small>PNG, JPG atau WEBP · maksimum 5MB</small></label><div class="image-preview hidden" id="image-preview"><img alt="Pratonton produk"><button type="button" id="remove-image">Buang gambar</button></div></fieldset>
+        <label class="image-url-field hidden" id="image-url-field">Atau tampal link gambar<input id="product-image-url" type="url" inputmode="url" placeholder="https://..."></label>
+      </section>
+
       <label class="visibility-toggle"><input id="product-active" type="checkbox" checked><span><strong>Paparkan di Kedai</strong><small>Matikan untuk sorok sementara.</small></span></label>
       <footer><button class="secondary-button" type="button" id="cancel-product">Batal</button><button class="primary-button" type="submit" id="save-product">Simpan Barang</button></footer>
     </form>
@@ -75,8 +96,8 @@
 
   <div class="confirm-modal hidden" id="confirm-modal"><div><h2>Buang barang ini?</h2><p>Barang akan dipadam daripada kedai.</p><footer><button class="secondary-button" id="cancel-delete">Batal</button><button class="danger-button" id="confirm-delete">Ya, buang</button></footer></div></div>
   <div class="toast" id="toast" role="status"></div>
-  <script src="config.js?v=1"></script>
-  <script src="pwa.js?v=1"></script>
-  <script type="module" src="manager.js?v=1"></script>
+  <script src="config.js?v=5"></script>
+  <script src="pwa.js?v=4"></script>
+  <script type="module" src="manager.js?v=7"></script>
 </body>
 </html>
