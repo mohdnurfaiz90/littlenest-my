@@ -1,0 +1,69 @@
+.manager-page{background:#fff9f3}
+.manager-login{display:flex;align-items:center;justify-content:flex-start;min-height:100vh;padding:48px clamp(28px,8vw,140px);background:#f7d6c9}
+.manager-login .login-scene{background:url("assets/exec-5c2a411e-81aa-49b1-9451-d5dafe5401f6.png") center/cover no-repeat}
+.manager-login .login-scene:after{background:linear-gradient(90deg,rgba(255,249,243,.1),rgba(255,249,243,0) 62%);backdrop-filter:none}
+.manager-login .login-card{width:min(430px,100%);margin:0;padding:32px 34px;text-align:left;border:1px solid rgba(255,255,255,.95);background:rgba(255,253,249,.96);box-shadow:0 24px 64px rgba(110,67,42,.2)}
+.manager-login .login-card>img{display:block;width:104px;height:104px;margin:0 auto 8px}
+.manager-login .login-card h1{text-align:center;font-size:2.2rem}
+.manager-login .login-card>p{text-align:center}
+.manager-login .login-card>a{display:block;text-align:center}
+
+.manager-app{grid-template-columns:260px minmax(0,1fr);background:#fff9f3}
+.manager-sidebar{width:260px;padding:24px 18px 18px;overflow:hidden;background:linear-gradient(rgba(255,253,249,.9),rgba(255,253,249,.84)),url("assets/exec-e6e3215d-d6d6-4c15-adc3-ba758b971281.png") left bottom/100% auto no-repeat;border-right:1px solid #eadbd1;box-shadow:10px 0 36px rgba(105,67,43,.06)}
+.manager-brand{padding:0 2px 24px}
+.manager-brand img{width:68px;height:68px;box-shadow:0 9px 24px rgba(99,57,34,.15)}
+.manager-brand strong{font-size:1.45rem}
+.manager-sidebar nav{gap:10px}
+.manager-sidebar nav>*{padding:14px 15px;border:1px solid transparent}
+.manager-sidebar nav .active{background:rgba(255,238,232,.94);border-color:#f7c6bd;box-shadow:0 8px 22px rgba(121,75,48,.07)}
+.manager-sidebar .sidebar-art{display:grid;justify-items:center;gap:4px;margin-top:auto;padding:18px 12px;background:rgba(255,255,255,.85);border:1px solid rgba(234,219,209,.94);border-radius:22px;box-shadow:0 12px 28px rgba(105,67,43,.08);color:#6b4733}
+.manager-sidebar .sidebar-art span{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;font-size:2.4rem;background:url("assets/littlenest-logo.png") center/cover;color:transparent;box-shadow:0 8px 18px rgba(105,67,43,.13)}
+.manager-sidebar .sidebar-art p{margin:0;font-size:.7rem}
+.manager-user{background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(105,67,43,.06)}
+
+.manager-main{position:relative;z-index:0;padding:30px 34px 44px;background:linear-gradient(rgba(255,250,246,.94),rgba(255,250,246,.98)),url("assets/exec-c9fe5ed2-a388-4c31-9e2f-a69467e2e08c.png") right top/230px auto no-repeat}
+.manager-header{min-height:142px;padding:25px 28px;margin-bottom:20px;border:1px solid rgba(255,255,255,.95);border-radius:25px;background:linear-gradient(90deg,rgba(255,253,249,.98) 0%,rgba(255,253,249,.92) 48%,rgba(255,253,249,.28) 74%,rgba(255,253,249,.08) 100%),url("assets/exec-5c2a411e-81aa-49b1-9451-d5dafe5401f6.png") center 43%/cover no-repeat;box-shadow:0 16px 44px rgba(105,67,43,.1)}
+.manager-header h1{font-size:2.8rem}
+.manager-header p{max-width:540px;color:#7b6254}
+.manager-header-actions{align-self:flex-end;padding-bottom:2px}
+.manager-header-actions .primary-button{padding:13px 20px;box-shadow:0 10px 23px rgba(244,127,131,.25)}
+.manager-controls{padding:17px 18px;border-radius:22px;background:rgba(255,255,255,.94);box-shadow:0 12px 32px rgba(105,67,43,.07)}
+.manager-list-shell{border-radius:22px;background:rgba(255,255,255,.97);box-shadow:0 18px 44px rgba(105,67,43,.08)}
+.manager-list-head{padding:15px 19px;background:#fff1e9;color:#75594b}
+.manager-row{padding:14px 19px;min-height:82px}
+.manager-row:hover{background:#fffbf8}
+.manager-product img{width:62px;height:62px;border:1px solid #eadbd1;box-shadow:0 6px 15px rgba(105,67,43,.08)}
+.manager-product strong{line-height:1.35}
+.product-drawer{background:linear-gradient(rgba(255,253,251,.96),rgba(255,253,251,.98)),url("assets/exec-c9fe5ed2-a388-4c31-9e2f-a69467e2e08c.png") right bottom/180px auto no-repeat}
+.product-drawer>header{background:rgba(255,253,251,.97)}
+.product-drawer form{padding-bottom:42px}
+.product-drawer .upload-zone{background:rgba(255,255,255,.76)}
+
+@media(max-width:1100px){
+  .manager-app{grid-template-columns:82px minmax(0,1fr)}
+  .manager-sidebar{width:82px;padding:18px 10px}
+  .manager-sidebar .sidebar-art{display:none}
+  .manager-main{padding:22px}
+  .manager-header{min-height:150px}
+}
+@media(max-width:780px){
+  .manager-login{justify-content:center;align-items:center;padding:54px 18px}
+  .manager-login .login-scene{background-image:url("assets/exec-716e574d-04ee-42ea-8a60-c03b5a9d0f15.png");background-position:center}
+  .manager-login .login-scene:after{background:rgba(255,249,243,.14)}
+  .manager-login .login-card{padding:27px 25px;background:rgba(255,253,249,.94)}
+  .manager-main{padding:16px}
+  .manager-header{min-height:auto;padding:22px;background:linear-gradient(rgba(255,253,249,.92),rgba(255,253,249,.95)),url("assets/exec-5c2a411e-81aa-49b1-9451-d5dafe5401f6.png") center/cover no-repeat}
+  .manager-header h1{font-size:2.15rem}
+}
+@media(max-width:520px){
+  .manager-login{min-height:100svh;padding:28px 14px}
+  .manager-login .login-card{padding:23px 20px;border-radius:25px}
+  .manager-login .login-card>img{width:88px;height:88px}
+  .manager-login .login-card h1{font-size:1.9rem}
+  .manager-app{grid-template-columns:1fr}
+  .manager-sidebar{width:100%}
+  .manager-header{padding:19px}
+  .manager-header h1{font-size:1.95rem}
+  .manager-controls{padding:12px}
+  .manager-row{padding:13px}
+}
