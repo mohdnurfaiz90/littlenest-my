@@ -75,3 +75,116 @@
   .shop-page .product-grid{grid-template-columns:1fr}
   .shop-page .product-card{grid-template-columns:132px minmax(0,1fr)}
 }
+
+/* Storefront fidelity repair v2 — dedicated desktop/mobile art and visible side scenery */
+.shop-page .shop-hero{
+  min-height:clamp(420px,31.25vw,500px);
+  background:#f8c9b7;
+}
+.shop-page .hero-background{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.shop-page .hero-scrim{display:none}
+.shop-page .hero-content{
+  width:min(1180px,calc(100% - 56px));
+  min-height:clamp(420px,31.25vw,500px);
+  align-items:flex-start;
+  gap:28px;
+  padding:58px 0 30px;
+}
+.shop-page .shop-logo{
+  width:190px;
+  flex:0 0 auto;
+  box-shadow:0 16px 38px rgba(107,61,36,.18);
+}
+.shop-page .hero-copy{
+  max-width:510px;
+  padding-top:4px;
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
+}
+.shop-page .hero-copy h1{font-size:clamp(3.4rem,4.9vw,4.8rem)}
+.shop-page .hero-copy p{max-width:490px}
+.shop-page main{
+  background:#fff9f3;
+}
+.shop-page main:before,
+.shop-page main:after{
+  display:block;
+  top:30px;
+  bottom:auto;
+  width:clamp(220px,calc((100vw - 1180px)/2 + 115px),310px);
+  height:min(1120px,calc(100vh + 280px));
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background-color:transparent;
+  background-repeat:no-repeat;
+  background-size:contain;
+  filter:none;
+  opacity:1;
+}
+.shop-page main:before{
+  left:0;
+  background-image:url("assets/exec-e6e3215d-d6d6-4c15-adc3-ba758b971281.png");
+  background-position:left top;
+}
+.shop-page main:after{
+  right:0;
+  background-image:url("assets/exec-c9fe5ed2-a388-4c31-9e2f-a69467e2e08c.png");
+  background-position:right top;
+}
+.shop-page .catalog-shell{
+  width:min(1180px,calc(100% - 64px));
+  margin:-22px auto 72px;
+  padding:38px 40px;
+}
+.shop-page .product-grid{gap:20px}
+
+@media(max-width:1260px){
+  .shop-page main:before,.shop-page main:after{opacity:.7;width:190px}
+  .shop-page .catalog-shell{width:calc(100% - 64px)}
+}
+
+@media(max-width:1100px){
+  .shop-page .shop-hero,.shop-page .hero-content{min-height:430px}
+  .shop-page .hero-content{padding-top:48px}
+  .shop-page main:before,.shop-page main:after{display:none}
+  .shop-page .catalog-shell{width:calc(100% - 36px);padding:32px}
+}
+
+@media(max-width:780px){
+  .shop-page .shop-hero,.shop-page .hero-content{min-height:680px}
+  .shop-page .hero-background{
+    content:url("assets/exec-716e574d-04ee-42ea-8a60-c03b5a9d0f15.png");
+    object-fit:cover;
+    object-position:center;
+  }
+  .shop-page .hero-content{
+    width:calc(100% - 32px);
+    min-height:680px;
+    justify-content:flex-start;
+    align-items:center;
+    padding:190px 0 118px;
+    gap:8px;
+  }
+  .shop-page .shop-logo{width:126px}
+  .shop-page .hero-copy{padding-top:0;max-width:570px}
+  .shop-page .hero-copy h1{font-size:3.2rem;margin-bottom:2px}
+  .shop-page .hero-copy h2{font-size:1.12rem}
+  .shop-page .hero-copy p{max-width:520px;font-size:.93rem;line-height:1.45;margin-bottom:13px}
+  .shop-page .catalog-shell{margin-top:-18px}
+}
+
+@media(max-width:520px){
+  .shop-page .shop-hero,.shop-page .hero-content{min-height:680px}
+  .shop-page .hero-content{padding:178px 0 122px}
+  .shop-page .shop-logo{width:116px}
+  .shop-page .hero-copy h1{font-size:2.85rem}
+  .shop-page .hero-copy h2{font-size:1.03rem}
+  .shop-page .hero-copy p{font-size:.86rem;line-height:1.42}
+  .shop-page .social-links a{font-size:.78rem;padding:8px 7px}
+  .shop-page .catalog-shell{width:calc(100% - 20px);padding:21px 14px}
+}
