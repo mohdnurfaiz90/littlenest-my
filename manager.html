@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7a6a8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LittleNest Manager">
+  <title>LittleNest Manager</title>
+  <link rel="manifest" href="manager.webmanifest?v=1">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <link rel="stylesheet" href="fixes.css?v=1">
+</head>
+<body class="manager-page">
+  <section class="manager-login" id="login-screen">
+    <div class="login-scene"></div>
+    <form class="login-card" id="login-form">
+      <img src="assets/littlenest-logo.png" alt="LittleNest MY">
+      <h1>LittleNest Manager</h1>
+      <p>Urus barang, harga dan stok dari satu tempat.</p>
+      <label>Email<input id="login-email" type="email" autocomplete="username" required placeholder="email pengurus"></label>
+      <label>Kata laluan<input id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••"></label>
+      <button class="primary-button" type="submit">Log masuk</button>
+      <p class="form-note" id="login-note"></p>
+      <button class="install-button" type="button" data-install-app>Pasang Manager</button>
+      <a href="index.html">← Lihat kedai</a>
+    </form>
+  </section>
+
+  <div class="manager-app hidden" id="manager-app">
+    <aside class="manager-sidebar">
+      <div class="manager-brand"><img src="assets/littlenest-logo.png" alt=""><strong>LittleNest <span>MY</span></strong></div>
+      <nav><button class="active">▣ <span>Semua Barang</span></button><a href="index.html" target="_blank">⌂ <span>Lihat Kedai</span></a></nav>
+      <div class="sidebar-art"><span>★</span><p>Nurture · Play · Grow</p></div>
+      <div class="manager-user"><span>LN</span><div><strong>Pemilik Kedai</strong><small id="manager-email"></small></div><button id="logout-button" title="Log keluar">↪</button></div>
+    </aside>
+
+    <main class="manager-main">
+      <header class="manager-header">
+        <div><h1>LittleNest <span>Manager</span></h1><p>Kemas kini barang dan stok dengan mudah.</p></div>
+        <div class="manager-header-actions"><button class="install-button" type="button" data-install-app>Pasang Manager</button><a href="index.html" target="_blank">Lihat Kedai ↗</a><button class="primary-button" id="add-product">＋ Tambah Barang</button></div>
+      </header>
+      <section class="manager-controls">
+        <label class="manager-search"><span>⌕</span><input id="manager-search" type="search" placeholder="Cari nama atau kod produk…"></label>
+        <div class="category-tabs compact" id="manager-tabs"></div>
+        <div class="manager-total"><small>Jumlah Produk</small><strong id="manager-count">0</strong></div>
+      </section>
+      <section class="manager-list-shell">
+        <div class="manager-list-head"><span>Produk</span><span>Harga</span><span>Stok</span><span>Kategori</span><span>Paparan</span><span>Tindakan</span></div>
+        <div id="manager-list"></div>
+        <div class="empty-state hidden" id="manager-empty"><h3>Belum ada barang</h3><p>Tekan “Tambah Barang” untuk mula.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop hidden" id="drawer-backdrop"></div>
+  <aside class="product-drawer" id="product-drawer" aria-hidden="true">
+    <header><div><h2 id="drawer-title">Tambah Barang</h2><p>Isi maklumat produk untuk dipaparkan di kedai.</p></div><button id="close-drawer" aria-label="Tutup">×</button></header>
+    <form id="product-form">
+      <input type="hidden" id="product-id">
+      <label>Kod Produk<input id="product-code" maxlength="30" placeholder="Automatik, contoh LN-BJ-001"></label>
+      <label>Nama Produk<input id="product-name" maxlength="180" required placeholder="Contoh: Baju Kurung Kanak-kanak"></label>
+      <label>Kategori<select id="product-category" required></select></label>
+      <div class="form-pair"><label>Harga (RM)<input id="product-price" type="number" min="0" step="0.01" required placeholder="0.00"></label><label>Stok (unit)<input id="product-stock" type="number" min="0" step="1" required value="1"></label></div>
+      <fieldset class="image-fieldset"><legend>Gambar Produk</legend><label class="upload-zone"><input id="product-file" type="file" accept="image/jpeg,image/png,image/webp"><span>☁</span><strong>Klik untuk muat naik</strong><small>PNG, JPG atau WEBP · maksimum 5MB</small></label><div class="image-preview hidden" id="image-preview"><img alt="Pratonton produk"><button type="button" id="remove-image">Buang gambar</button></div></fieldset>
+      <label class="visibility-toggle"><input id="product-active" type="checkbox" checked><span><strong>Paparkan di Kedai</strong><small>Matikan untuk sorok sementara.</small></span></label>
+      <footer><button class="secondary-button" type="button" id="cancel-product">Batal</button><button class="primary-button" type="submit" id="save-product">Simpan Barang</button></footer>
+    </form>
+  </aside>
+
+  <div class="confirm-modal hidden" id="confirm-modal"><div><h2>Buang barang ini?</h2><p>Barang akan dipadam daripada kedai.</p><footer><button class="secondary-button" id="cancel-delete">Batal</button><button class="danger-button" id="confirm-delete">Ya, buang</button></footer></div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="config.js?v=1"></script>
+  <script src="pwa.js?v=1"></script>
+  <script type="module" src="manager.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "id": "/littlenest-my/manager.html",
+  "name": "LittleNest Manager",
+  "short_name": "LN Manager",
+  "description": "Urus produk dan stok LittleNest MY.",
+  "lang": "ms-MY",
+  "start_url": "/littlenest-my/manager.html?source=pwa",
+  "scope": "/littlenest-my/",
+  "display": "standalone",
+  "background_color": "#fff8f3",
+  "theme_color": "#f7a6a8",
+  "prefer_related_applications": false,
+  "icons": [
+    {"src":"/littlenest-my/assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/littlenest-my/assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

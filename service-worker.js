@@ -1,0 +1,5 @@
+const CACHE_NAME="littlenest-manager-v1";
+const APP_SHELL=["/littlenest-my/","/littlenest-my/index.html","/littlenest-my/manager.html","/littlenest-my/styles.css?v=1","/littlenest-my/fixes.css?v=1","/littlenest-my/shop.js?v=1","/littlenest-my/manager.js?v=1","/littlenest-my/data-service.js?v=1","/littlenest-my/config.js?v=1","/littlenest-my/pwa.js?v=1","/littlenest-my/manager.webmanifest?v=1","/littlenest-my/assets/littlenest-logo.png","/littlenest-my/assets/nursery-hero.png","/littlenest-my/assets/icon-192.png","/littlenest-my/assets/icon-512.png"];
+self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)));self.skipWaiting();});
+self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;const u=new URL(e.request.url);if(u.origin===location.origin)e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).then(r=>{if(r.ok)caches.open(CACHE_NAME).then(x=>x.put(e.request,r.clone()));return r;})));});

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7a6a8">
+  <meta name="description" content="LittleNest MY — pilihan ceria untuk si kecil.">
+  <title>LittleNest MY | Kedai Si Kecil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <link rel="stylesheet" href="fixes.css?v=1">
+</head>
+<body class="shop-page">
+  <header class="shop-hero">
+    <img class="hero-background" src="assets/nursery-hero.png" alt="" aria-hidden="true">
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <img class="shop-logo" src="assets/littlenest-logo.png" alt="Logo LittleNest MY">
+      <div class="hero-copy">
+        <h1>LittleNest <span>MY</span></h1>
+        <p>Pilihan comel dan berguna untuk si kecil—dipilih dengan penuh kasih.</p>
+        <nav class="social-links" aria-label="Media sosial LittleNest MY">
+          <a href="https://www.facebook.com/littlenestmy" target="_blank" rel="noopener"><span class="social-icon fb">f</span>Facebook</a>
+          <a href="https://www.tiktok.com/@latifah.aliani1?_r=1&_t=ZS-98s2zbFcifA" target="_blank" rel="noopener"><span class="social-icon tt">♪</span>TikTok</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalog-shell" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div><h2 id="catalog-title">Pilihan untuk si kecil</h2><p>Cari mengikut kategori, kemudian hubungi kami terus di WhatsApp.</p></div>
+        <label class="shop-search"><span aria-hidden="true">⌕</span><input id="shop-search" type="search" placeholder="Cari barang atau kod…"></label>
+      </div>
+      <div class="category-tabs" id="category-tabs" aria-label="Kategori barang"></div>
+      <p class="result-count" id="result-count"></p>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="empty-state"><span>☁</span><h3>Belum ada barang di sini</h3><p>Cuba kategori lain atau datang semula nanti.</p></div>
+    </section>
+  </main>
+
+  <footer class="shop-footer">
+    <img src="assets/littlenest-logo.png" alt="">
+    <div><strong>LittleNest MY</strong><p>Nurture · Play · Grow</p></div>
+    <a href="https://wa.me/6011137302324" target="_blank" rel="noopener">WhatsApp kami</a>
+  </footer>
+
+  <script src="config.js?v=1"></script>
+  <script type="module" src="shop.js?v=1"></script>
+</body>
+</html>
